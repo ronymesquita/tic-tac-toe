@@ -1,0 +1,90 @@
+.border-pane,
+.grid-pane,
+.vbox {
+	-fx-background-color: #0c1519;
+}
+
+.label {
+	-fx-text-alignment: center;
+	-fx-alignment: center;
+	-fx-content-display: center;
+	-fx-font-size: 2.0em;
+}
+
+.player-symbol {
+	-fx-font-size: 4.0em;
+	-fx-background-color: #0f1a20;
+	-fx-text-fill: #ffffff;
+}
+
+.player-symbol:hover {
+	-fx-background-color: #070b0d, #0e161a;
+	-fx-cursor: hand;
+}
+
+#player-symbol-00,
+#player-symbol-10,
+#player-symbol-01,
+#player-symbol-11  {
+	-fx-background-color: #fc4a19, #0f1a20;
+	-fx-background-insets: 0, 0 3 3 0;
+}
+
+#player-symbol-00:hover,
+#player-symbol-10:hover,
+#player-symbol-01:hover,
+#player-symbol-11:hover {
+	-fx-background-color: #fc4a19, #0e161a;
+	-fx-background-insets: 0, 0 3 3 0;
+}
+
+#player-symbol-20,
+#player-symbol-21 {
+	-fx-background-color: #fc4a19, #0f1a20;
+	-fx-background-insets: 0, 0 0 3 0;
+}
+
+#player-symbol-20:hover,
+#player-symbol-21:hover {
+	-fx-background-color: #fc4a19, #0e161a;
+	-fx-background-insets: 0, 0 0 3 0;
+}
+
+#player-symbol-02,
+#player-symbol-12 {
+	-fx-background-color: #fc4a19, #0f1a20;
+	-fx-background-insets: 0, 0 3 0 0;
+}
+
+#player-symbol-02:hover,
+#player-symbol-12:hover {
+	-fx-background-color: #fc4a19, #0e161a;
+	-fx-background-insets: 0, 0 3 0 0;
+}
+
+.player-name {
+	-fx-font-size: 2em;
+	-fx-text-fill: #3c91e6;
+}
+
+#player-name-1 {
+	-fx-text-fill: #ffffff;
+}
+
+#player-name-2 {
+	-fx-text-fill: #ffffff;
+}
+
+#winner {
+	-fx-text-fill: #3c91e6;
+	-fx-font-size: 2.5em;
+}
+
+.status-bar,
+.status-bar-message {
+	-fx-background-color: #2ab0d9;
+	-fx-text-alignment: center;
+	-fx-text-fill: #ffffff;
+	-fx-font-size: 1.25em;
+	-fx-padding: .75em 0 .5em .75em;
+}

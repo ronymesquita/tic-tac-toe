@@ -1,0 +1,28 @@
+name: noughts-and-crosses
+title: 'Tic-tac-toe Game'
+base: core18
+version: '0.0.2'
+summary: Tic-tac-toe game for Linux systems made with JavaFX.
+description: |
+  Digital version of the tic-tac-toe game, known as noughts and crosses in american english.
+grade: stable
+confinement: strict
+
+apps:
+  noughts-and-crosses:
+    command: "usr/lib/jvm/java-11-openjdk-amd64/bin/java -jar $SNAP/jar/tic-tac-toe.jar"
+    environment:
+      JAVA_HOME: "$SNAP/usr/lib/jvm/java-11-openjdk-amd64"
+      JAVA_TOOL_OPTIONS: "-Duser.home=$SNAP_USER_COMMON"
+    extensions:
+      - gnome-3-28
+    plugs:
+      - gsettings
+
+parts:
+  noughts-and-crosses:
+    source: "."
+    source-type: local
+    plugin: maven
+    build-packages: [ openjdk-11-jdk ]
+    stage-packages: [ openjdk-11-jre ]

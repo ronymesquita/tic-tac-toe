@@ -1,0 +1,143 @@
+spring:
+  application:
+    name: Tic-tac-toe
+  main:
+    banner-mode: 'OFF'
+    web-application-type: none  
+  profiles:
+    active:
+    - default
+    
+  aop:
+    auto: false
+  cache:
+    type: simple
+  task:
+    execution:
+      pool:
+        core-size: 2
+        max-size: 4
+  jmx:
+    enabled: false
+    
+  autoconfigure:
+    exclude: 
+    - ActiveMQAutoConfiguration
+    - ArtemisAutoConfiguration
+    - BatchAutoConfiguration
+    - CaffeineCacheConfiguration
+    - CassandraAutoConfiguration
+    - CassandraDataAutoConfiguration
+    - CassandraReactiveDataAutoConfiguration
+    - CassandraReactiveRepositoriesAutoConfiguration
+    - CassandraRepositoriesAutoConfiguration
+    - ClientHttpConnectorAutoConfiguration
+    - CloudServiceConnectorsAutoConfiguration
+    - CodecsAutoConfiguration
+    - CouchbaseAutoConfiguration
+    - CouchbaseCacheConfiguration
+    - CouchbaseDataAutoConfiguration
+    - CouchbaseReactiveDataAutoConfiguration
+    - CouchbaseReactiveRepositoriesAutoConfiguration
+    - CouchbaseRepositoriesAutoConfiguration
+    - DataSourceAutoConfiguration
+    - DataSourceTransactionManagerAutoConfiguration
+    - DispatcherServletAutoConfiguration
+    - EhCacheCacheConfiguration
+    - ElasticsearchAutoConfiguration
+    - ElasticsearchDataAutoConfiguration
+    - ElasticsearchRepositoriesAutoConfiguration
+    - EmbeddedLdapAutoConfiguration
+    - EmbeddedMongoAutoConfiguration
+    - EmbeddedWebServerFactoryCustomizerAutoConfiguration
+    - ErrorMvcAutoConfiguration
+    - ErrorWebFluxAutoConfiguration
+    - FlywayAutoConfiguration
+    - FreeMarkerAutoConfiguration
+    - GroovyTemplateAutoConfiguration
+    - GsonAutoConfiguration
+    - H2ConsoleAutoConfiguration
+    - HazelcastAutoConfiguration
+    - HazelcastCacheConfiguration
+    - HazelcastJpaDependencyAutoConfiguration
+    - HibernateJpaAutoConfiguration
+    - HttpEncodingAutoConfiguration
+    - HttpHandlerAutoConfiguration
+    - HttpMessageConvertersAutoConfiguration
+    - HypermediaAutoConfiguration
+    - InfinispanCacheConfiguration
+    - InfluxDbAutoConfiguration
+    - IntegrationAutoConfiguration
+    - JCacheCacheConfiguration
+    - JacksonAutoConfiguration
+    - JdbcRepositoriesAutoConfiguration
+    - JdbcTemplateAutoConfiguration
+    - JerseyAutoConfiguration
+    - JestAutoConfiguration
+    - JmsAutoConfiguration
+    - JndiConnectionFactoryAutoConfiguration
+    - JndiDataSourceAutoConfiguration
+    - JooqAutoConfiguration
+    - JpaRepositoriesAutoConfiguration
+    - JsonbAutoConfiguration
+    - JtaAutoConfiguration
+    - KafkaAutoConfiguration
+    - LdapAutoConfiguration
+    - LdapRepositoriesAutoConfiguration
+    - LiquibaseAutoConfiguration
+    - MailSenderAutoConfiguration
+    - MailSenderValidatorAutoConfiguration
+    - MessageSourceAutoConfiguration
+    - MongoAutoConfiguration
+    - MongoDataAutoConfiguration
+    - MongoReactiveAutoConfiguration
+    - MongoReactiveDataAutoConfiguration
+    - MongoReactiveRepositoriesAutoConfiguration
+    - MongoRepositoriesAutoConfiguration
+    - MultipartAutoConfiguration
+    - MustacheAutoConfiguration
+    - Neo4jDataAutoConfiguration
+    - Neo4jRepositoriesAutoConfiguration
+    - OAuth2ClientAutoConfiguration
+    - OAuth2ResourceServerAutoConfiguration
+    - PersistenceExceptionTranslationAutoConfiguration
+    - ProjectInfoAutoConfiguration#buildPropertiesd
+    - ProjectInfoAutoConfiguration#gitPropertiesd
+    - QuartzAutoConfiguration
+    - RabbitAutoConfiguration
+    - ReactiveOAuth2ClientAutoConfiguration
+    - ReactiveOAuth2ResourceServerAutoConfiguration
+    - ReactiveSecurityAutoConfiguration
+    - ReactiveUserDetailsServiceAutoConfiguration
+    - ReactiveWebServerFactoryAutoConfiguration
+    - ReactorCoreAutoConfiguration
+    - RedisAutoConfiguration
+    - RedisCacheConfiguration
+    - RedisReactiveAutoConfiguration
+    - RedisRepositoriesAutoConfiguration
+    - RepositoryRestMvcAutoConfiguration
+    - RestClientAutoConfiguration
+    - RestTemplateAutoConfiguration
+    - SecurityAutoConfiguration
+    - SecurityFilterAutoConfiguration
+    - SendGridAutoConfiguration
+    - ServletWebServerFactoryAutoConfiguration
+    - SessionAutoConfiguration
+    - SolrAutoConfiguration
+    - SolrRepositoriesAutoConfiguration
+    - SpringApplicationAdminJmxAutoConfiguration
+    - SpringDataWebAutoConfiguration
+    - TaskSchedulingAutoConfiguration#taskSchedulerd
+    - ThymeleafAutoConfiguration
+    - TransactionAutoConfiguration
+    - UserDetailsServiceAutoConfiguration
+    - ValidationAutoConfiguration
+    - WebClientAutoConfiguration
+    - WebFluxAutoConfiguration
+    - WebMvcAutoConfiguration
+    - WebServiceTemplateAutoConfiguration
+    - WebServicesAutoConfiguration
+    - WebSocketMessagingAutoConfiguration
+    - WebSocketReactiveAutoConfiguration
+    - WebSocketServletAutoConfiguration
+    - XADataSourceAutoConfiguration

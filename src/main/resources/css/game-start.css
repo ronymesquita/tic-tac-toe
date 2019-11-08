@@ -1,0 +1,44 @@
+.vbox {
+	-fx-background-color: #ffffff;
+}
+
+.pane-test {
+	-fx-min-width: 100%;
+	-fx-min-heigth: 100%;
+}
+
+.title {
+	-fx-font-size: 2.75em;
+	-fx-font-weight: bold;
+	-fx-font-family: Ubuntu;
+	-fx-text-fill: #3c91e6;
+}
+
+.player-name-input {
+	-fx-font-family: Ubuntu;
+	-fx-font-size: 1.25em;
+}
+
+#start-button {
+	-fx-text-fill: #ffffff;
+}
+
+.button,
+.start-button {
+	-fx-min-width: 150px;
+	-fx-padding: .75em;
+	-fx-background-radius: 2em;
+	-fx-font-size: 1.2em;
+	-fx-background-color: #3c91e6;
+	-fx-text-fill: #ffffff;
+	-fx-cursor: hand;
+}
+
+#start-button:hover,
+#start-button:focused,
+#start-button:pressed,
+.start-button:hover,
+.start-button:focused,
+.start-button:pressed {
+	-fx-background-color: #0072e5;
+}
