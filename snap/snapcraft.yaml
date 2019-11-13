@@ -7,6 +7,8 @@ description: |
   Digital version of the tic-tac-toe game, known as noughts and crosses in american english.
 grade: stable
 confinement: strict
+architectures:
+  - build-on: amd64
 
 apps:
   noughts-and-crosses:
