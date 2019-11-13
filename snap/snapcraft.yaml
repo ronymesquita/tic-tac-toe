@@ -12,7 +12,7 @@ apps:
   noughts-and-crosses:
     command: "usr/lib/jvm/java-11-openjdk-amd64/bin/java -jar $SNAP/jar/tic-tac-toe.jar"
     environment:
-      JAVA_HOME: "$SNAP/usr/lib/jvm/java-11-openjdk-amd64"
+      JAVA_HOME: "$SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH"
       JAVA_TOOL_OPTIONS: "-Duser.home=$SNAP_USER_COMMON"
     extensions:
       - gnome-3-28
