@@ -66,7 +66,7 @@ public class GameStartController implements Initializable {
 				playerONameTextField.getText();
 		var playerO = new Player(playerOName, PLAYER_O);
 
-		ticTacToeGame.restart(playerX, playerO);
+		ticTacToeGame.newGame(playerX, playerO);
 
 		windowAlternator.navigateTo(ApplicationWindows.TIC_TAC_TOE_GAME);
 	}

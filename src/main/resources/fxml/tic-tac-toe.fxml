@@ -36,7 +36,7 @@
       </GridPane>
    </center>
    <right>
-      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="200.0" styleClass="vbox" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="280.0" styleClass="vbox" BorderPane.alignment="CENTER">
          <children>
             <Label styleClass="player-name" text="Jogador X" />
             <Label id="player-name-1" fx:id="playerXNameLabel">

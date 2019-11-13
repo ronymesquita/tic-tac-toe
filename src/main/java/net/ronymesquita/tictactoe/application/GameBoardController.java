@@ -5,21 +5,25 @@ import java.util.ResourceBundle;
 
 import org.controlsfx.control.StatusBar;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.util.Duration;
+import net.ronymesquita.tictactoe.application.WindowAlternator.ApplicationWindows;
 import net.ronymesquita.tictactoe.model.AlreadyOccupiedSpace;
 import net.ronymesquita.tictactoe.model.TicTacToe;
 
@@ -41,9 +45,19 @@ public class GameBoardController implements Initializable {
 	@Autowired
 	private TicTacToe ticTacToeGame;
 
+	private WindowAlternator windowAlternator;
+
+	@Autowired
+	@Lazy
+	public GameBoardController(WindowAlternator windowAlternator) {
+		this.windowAlternator = windowAlternator;
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		configurePlayers();
+
+		configureGamePlayOptions();
 	}
 
 	@FXML
@@ -256,6 +270,52 @@ public class GameBoardController implements Initializable {
 
 	private String getWinnerMessage() {
 		return String.format("%s ganhou!", ticTacToeGame.getWinner().get().getName());
+	}
+	
+	/**
+	 * Configures the buttons on the status bar to start a new match 
+	 * or restart with the current players.
+	 */
+	private void configureGamePlayOptions() {
+		var restartGameButton = new Button("Reiniciar");
+		var newGameButton = new Button("Nova partida");
+		var gameOptionsHBox = new HBox(restartGameButton, newGameButton);
+		gameOptionsHBox.getStyleClass().add("game-options-box");
+		gameOptionsHBox.getChildren().forEach(button -> button.getStyleClass().add("game-option-button"));
+		
+		newGameButton.setOnAction(
+				actionEvent -> 
+				windowAlternator.navigateTo(ApplicationWindows.GAME_START));
+		
+		restartGameButton.setOnAction(actionEvent -> {
+			ticTacToeGame.restart();
+			
+			cleanSymbolCells();
+			if (hasWinnerLineDrawed()) {
+				gameBoardGridPane.getChildren().remove(9);
+			}
+			clearStatusBarText();
+		});
+		
+		statusBar.getRightItems().add(gameOptionsHBox);
+	}
+
+	/**
+	 * Checks the game board to determine if this has the winner line draw,
+	 * situation when there are more than 9 cells on the board.
+	 * @return <code>true</code> if the game board has the winner line draw
+	 */
+	private boolean hasWinnerLineDrawed() {
+		return gameBoardGridPane.getChildren().size() > 9;
+	}
+
+	/**
+	 * Clean all cell of the game board.
+	 */
+	private void cleanSymbolCells() {
+		gameBoardGridPane.getChildren()
+			.filtered(gameBoardChildren -> gameBoardChildren.getClass().equals(Label.class))
+			.forEach(symbolLabel -> ((Label) symbolLabel).setText(""));
 	}
 
 }

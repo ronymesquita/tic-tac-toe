@@ -110,7 +110,7 @@ class TicTacToeTest {
 		assertEquals(PLAYER_X, ticTacToeGame.getWinner().get().getPlayerSymbol());
 		assertArrayEquals(winnerGridPlace, ticTacToeGame.getWinnerGridPlace());
 		
-		ticTacToeGame.restart(playerX, playerO);
+		ticTacToeGame.restart();
 		ticTacToeGame.play(2, 1); // X
 		ticTacToeGame.play(1, 1); // O
 		ticTacToeGame.play(2, 2); // X
@@ -124,7 +124,7 @@ class TicTacToeTest {
 		assertEquals(PLAYER_X, ticTacToeGame.getWinner().get().getPlayerSymbol());
 		assertArrayEquals(winnerGridPlace, ticTacToeGame.getWinnerGridPlace());
 		
-		ticTacToeGame.restart(playerX, playerO);
+		ticTacToeGame.restart();
 		ticTacToeGame.play(3, 1); // X
 		ticTacToeGame.play(1, 1); // O
 		ticTacToeGame.play(3, 2); // X
@@ -154,7 +154,7 @@ class TicTacToeTest {
 		assertEquals(PLAYER_X, ticTacToeGame.getWinner().get().getPlayerSymbol());
 		assertArrayEquals(winnerGridPlace, ticTacToeGame.getWinnerGridPlace());
 		
-		ticTacToeGame.restart(playerX, playerO);
+		ticTacToeGame.restart();
 		ticTacToeGame.play(2, 1); // X
 		ticTacToeGame.play(1, 1); // O
 		ticTacToeGame.play(2, 2); // X
@@ -168,7 +168,7 @@ class TicTacToeTest {
 		assertEquals(PLAYER_X, ticTacToeGame.getWinner().get().getPlayerSymbol());
 		assertArrayEquals(winnerGridPlace, ticTacToeGame.getWinnerGridPlace());
 		
-		ticTacToeGame.restart(playerX, playerO);
+		ticTacToeGame.restart();
 		ticTacToeGame.play(3, 1); // X
 		ticTacToeGame.play(1, 1); // O
 		ticTacToeGame.play(3, 2); // X
@@ -215,4 +215,20 @@ class TicTacToeTest {
 		assertArrayEquals(winnerGridPlace, ticTacToeGame.getWinnerGridPlace());
 	}
 	
+	@Test
+	void whenRestartPlayersShouldBeTheSame() {
+		ticTacToeGame.restart();
+		assertEquals(ticTacToeGame.getPlayerX(), playerX);
+		assertEquals(ticTacToeGame.getPlayerO(), playerO);
+	}
+	
+	@Test
+	void whenStartNewGamePlayersShouldBeDifferent() {
+		var newPlayerX = new Player("Rafael", PLAYER_X);
+		var newPlayerO = new Player("Pedro", PLAYER_O);
+		ticTacToeGame.newGame(newPlayerX, newPlayerO);
+		assertNotEquals(ticTacToeGame.getPlayerX(), playerX);
+		assertNotEquals(ticTacToeGame.getPlayerO(), playerO);
+	}
+
 }

@@ -94,14 +94,18 @@ public class TicTacToe {
 		return Optional.empty();
 	}
 
-	public void restart(Player playerX, Player playerO) {
+	public void newGame(Player newPlayerX, Player newPlayerO) {
+		playerX = newPlayerX;
+		playerO = newPlayerO;
+		restart();
+	}
+	
+	public void restart() {
 		board = new String[][]{
 				{ "", "", "" },
 				{ "", "", "" },
 				{ "", "", "" }
 		};
-		this.playerX = playerX;
-		this.playerO = playerO;
 		currentPlayer = playerX;
 		winnerGridPlace = null;
 	}

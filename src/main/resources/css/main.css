@@ -85,6 +85,29 @@
 	-fx-background-color: #2ab0d9;
 	-fx-text-alignment: center;
 	-fx-text-fill: #ffffff;
-	-fx-font-size: 1.25em;
-	-fx-padding: .75em 0 .5em .75em;
+	-fx-font-size: 1.4em;
+}
+
+.status-bar-message {
+	-fx-padding: .75em 0 .75em .75em;
+}
+
+.status-bar .game-options-box {
+	-fx-padding: 0 0 0 .75em;
+}
+
+.status-bar .game-option-button {
+	-fx-background-color: #0e161a;
+	-fx-text-fill: #ffffff;
+	-fx-padding: 1em 1.5em;
+	-fx-translate-x: 4;
+	-fx-scale-y: 1.14;
+	-fx-background-radius: 0;
+	-fx-border-color: #0e161a;
+	-fx-border-width: 1px;
+}
+
+.status-bar .game-option-button:hover {
+	-fx-cursor: hand;
+	-fx-background-color: #0e161aeb;
 }
