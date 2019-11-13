@@ -46,7 +46,7 @@ public class TicTacToe {
 	private void setBox(int xAxisPosition, int yAxisPosition) {
 		if (board[xAxisPosition][yAxisPosition] != null
 				&& !board[xAxisPosition][yAxisPosition].isBlank()) {
-			throw new AlreadyOccupiedSpace();
+			throw new AlreadyOccupiedSpaceException();
 		}
 
 		board[xAxisPosition][yAxisPosition] = currentPlayer
@@ -56,13 +56,13 @@ public class TicTacToe {
 
 	private void checkOAxis(int yAxis) {
 		if (yAxis < 0 || yAxis > 3) {
-			throw new PiecePlacedOutsideBoard("O is outside board.");
+			throw new PiecePlacedOutsideBoardException("O is outside board.");
 		}
 	}
 
 	private void checkXAxis(int xAxis) {
 		if (xAxis < 0 || xAxis > 3) {
-			throw new PiecePlacedOutsideBoard("X is outside board.");
+			throw new PiecePlacedOutsideBoardException("X is outside board.");
 		}
 	}
 

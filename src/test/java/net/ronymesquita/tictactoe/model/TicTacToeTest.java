@@ -55,20 +55,20 @@ class TicTacToeTest {
 	
 	@Test
 	void whenPieceIsOutsideBoardThenThrowsPiecePlacedOutsideGridException() {
-		assertThrows(PiecePlacedOutsideBoard.class, () -> 
+		assertThrows(PiecePlacedOutsideBoardException.class, () -> 
 				ticTacToeGame.play(4, 1));
     }
 	
 	@Test
 	void whenPieceIsOutsideYThenThrowsPiecePlacedOutsideGridException() {
-		assertThrows(PiecePlacedOutsideBoard.class, () -> 
+		assertThrows(PiecePlacedOutsideBoardException.class, () -> 
 				ticTacToeGame.play(1, 4));
 	}
 	
 	@Test
 	void whenPieceIsPlacedAtOccupiedSpaceThenThrowsAlreadyOccupiedSpaceException() {
 		ticTacToeGame.play(1, 1);
-		assertThrows(AlreadyOccupiedSpace.class, () -> 
+		assertThrows(AlreadyOccupiedSpaceException.class, () -> 
 				ticTacToeGame.play(1, 1));
 	}
 	
@@ -76,7 +76,7 @@ class TicTacToeTest {
 	void whenPieceIsPlacedAtOccupiedSpaceThenThrowsAlreadyOccupiedSpaceExceptionAndNextPieceIsTheSame() {
 		ticTacToeGame.play(1, 1); // Player by X
 		var playerO = ticTacToeGame.nextPlayer();
-		assertThrows(AlreadyOccupiedSpace.class, () -> ticTacToeGame.play(1, 1));
+		assertThrows(AlreadyOccupiedSpaceException.class, () -> ticTacToeGame.play(1, 1));
 		assertEquals(playerO.getPlayerSymbol(), ticTacToeGame.nextPlayer().getPlayerSymbol());
 	}
 	

@@ -24,7 +24,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.util.Duration;
 import net.ronymesquita.tictactoe.application.WindowAlternator.ApplicationWindows;
-import net.ronymesquita.tictactoe.model.AlreadyOccupiedSpace;
+import net.ronymesquita.tictactoe.model.AlreadyOccupiedSpaceException;
 import net.ronymesquita.tictactoe.model.TicTacToe;
 
 @Controller
@@ -92,7 +92,7 @@ public class GameBoardController implements Initializable {
 					setStatusBarMessage("Empate.");
 				}
 			}
-		} catch (AlreadyOccupiedSpace alreadyOccupiedSpaceException) {
+		} catch (AlreadyOccupiedSpaceException alreadyOccupiedSpaceException) {
 			setStatusBarMessage("Espaço já ocupado.");
 			configureTurnSymbolLabel(playerSymbolLabel, false);
 			clearStatusBarText();
@@ -105,6 +105,9 @@ public class GameBoardController implements Initializable {
 				mouseEvent.getSceneY());
 	}
 
+	/**
+	 * Creates and draw the line when a player wins the game.
+	 */
 	private void configureWinnerLine() {
 		int[][] winnerGridPlace = ticTacToeGame.getWinnerGridPlace();
 		var linePane = new Pane();
@@ -152,6 +155,11 @@ public class GameBoardController implements Initializable {
 		gameBoardGridPane.add(linePane, 0, 0);
 	}
 
+	/**
+	 * Creates a vertical line based on the cell bounds.
+	 * @param symbolCellBounds The bounds of the cell to determine the coordinates.
+	 * @return vertical line based on the cell bounds.
+	 */
 	private Line getVerticalLine(Bounds symbolCellBounds) {
 		return new Line(
 				symbolCellBounds.getMinX() + symbolCellBounds.getWidth() / 2,
@@ -160,6 +168,11 @@ public class GameBoardController implements Initializable {
 				symbolCellBounds.getMaxY());
 	}
 
+	/**
+	 * Creates a horizontal line based on the cell bounds.
+	 * @param symbolCellBounds The bounds of the cell to determine the coordinates.
+	 * @return horizontal line based on the cell bounds.
+	 */
 	private Line getHorizontalLine(Bounds symbolCellBounds) {
 		return new Line(
 				symbolCellBounds.getMinX(),
@@ -250,6 +263,9 @@ public class GameBoardController implements Initializable {
 		return ticTacToeGame.isEndOfGame() && ticTacToeGame.getWinner().isEmpty();
 	}
 
+	/**
+	 * Configures the window to show the names of the players.
+	 */
 	private void configurePlayers() {
 		playerXNameLabel.setText(ticTacToeGame.getPlayerX().getName());
 		playerONameLabel.setText(ticTacToeGame.getPlayerO().getName());
