@@ -95,7 +95,7 @@ public class GameBoardController implements Initializable {
 		} catch (AlreadyOccupiedSpaceException alreadyOccupiedSpaceException) {
 			setStatusBarMessage("Espaço já ocupado.");
 			configureTurnSymbolLabel(playerSymbolLabel, false);
-			clearStatusBarText();
+			clearStatusBarText(5);
 		}
 	}
 
@@ -271,8 +271,19 @@ public class GameBoardController implements Initializable {
 		playerONameLabel.setText(ticTacToeGame.getPlayerO().getName());
 	}
 
+	/**
+	 * Cleans the status bar in 3 seconds by default.
+	 */
 	private void clearStatusBarText() {
-		var pauseTransition = new PauseTransition(Duration.seconds(3));
+		clearStatusBarText(3);
+	}
+	
+	/**
+	 * Cleans the status bar in {@code timeInSeconds} seconds by default.
+	 * @param timeInSeconds time in seconds before clear the status bar
+	 */
+	private void clearStatusBarText(int timeInSeconds) {
+		var pauseTransition = new PauseTransition(Duration.seconds(timeInSeconds));
 		pauseTransition.setOnFinished(actionEvent -> setStatusBarMessage(""));
 		pauseTransition.play();
 	}
