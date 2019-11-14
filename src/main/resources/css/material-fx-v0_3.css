@@ -32,7 +32,8 @@
  * Root					 				                       				   *
  *                                                                             *
  ******************************************************************************/
-.root {
+.root,
+.root * {
 	/* Swatch Colors - Blue*/
 	-swatch-100: #BBDEFB;
 	-swatch-200: #90CAF9;
@@ -49,7 +50,8 @@
 	-fx-text-control-title-color: rgb(130.0, 130.0, 130.0);
 	-fx-text-fill: -fx-text-base-color;
 	-dark: rgb(47.0, 52.0, 57.0);
-	-fx-background-color: -dark;
+	-white: #fffffc;
+	-fx-background-color: -white;
 	/*default font */
 	-fx-font-family: 'Roboto Medium';
 	-fx-font-size: 14.0px;
