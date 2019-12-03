@@ -38,13 +38,13 @@
    <right>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="280.0" styleClass="vbox" BorderPane.alignment="CENTER">
          <children>
-            <Label styleClass="player-name" text="Jogador X" />
+            <Label styleClass="player-name" fx:id="playerXLabel" text="Jogador ×" />
             <Label id="player-name-1" fx:id="playerXNameLabel">
                <VBox.margin>
                   <Insets bottom="22.0" top="14.0" />
                </VBox.margin>
             </Label>
-            <Label styleClass="player-name" text="Jogador O" />
+            <Label styleClass="player-name" fx:id="playerOLabel" text="Jogador ◯" />
             <Label id="player-name-2" fx:id="playerONameLabel">
                <VBox.margin>
                   <Insets top="14.0" />

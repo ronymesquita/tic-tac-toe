@@ -1,10 +1,12 @@
 package net.ronymesquita.tictactoe.application;
 
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.StatusBar;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
@@ -30,9 +32,17 @@ import net.ronymesquita.tictactoe.model.TicTacToe;
 @Controller
 public class GameBoardController implements Initializable {
 
+	private static final Locale DEFAULT_LOCALE = Locale.getDefault();
+
 	@FXML
 	private GridPane gameBoardGridPane;
 
+	@FXML
+	private Label playerXLabel;
+	
+	@FXML
+	private Label playerOLabel;
+	
 	@FXML
 	private Label playerXNameLabel;
 
@@ -41,10 +51,13 @@ public class GameBoardController implements Initializable {
 
 	@FXML
 	private StatusBar statusBar;
-
+	
 	@Autowired
 	private TicTacToe ticTacToeGame;
 
+	@Autowired
+	private MessageSource applicationMessagess;
+	
 	private WindowAlternator windowAlternator;
 
 	@Autowired
@@ -54,16 +67,16 @@ public class GameBoardController implements Initializable {
 	}
 	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(URL location, ResourceBundle resourceBundle) {
 		configurePlayers();
-
 		configureGamePlayOptions();
+		configureInitializationMessages();
 	}
 
 	@FXML
 	void configureGamePlay(MouseEvent mouseEvent) {
 		if (gameIsTied()) {
-			setStatusBarMessage("Empate.");
+			setStatusBarMessage(getApplicationText("tied-game"));
 		} else if (!ticTacToeGame.isEndOfGame()) {
 			for (var gridCell : gameBoardGridPane.getChildrenUnmodifiable()) {
 				if (gridCell instanceof Label) {
@@ -78,6 +91,11 @@ public class GameBoardController implements Initializable {
 			}
 		}
 	}
+	
+	private void configureInitializationMessages() {
+		playerXLabel.setText(getApplicationText("player-x-label"));
+		playerOLabel.setText(getApplicationText("player-o-label"));
+	}
 
 	private void configureGameRound(Label playerSymbolLabel, int xAxis, int yAxis) {
 		try {
@@ -89,11 +107,11 @@ public class GameBoardController implements Initializable {
 					setStatusBarMessage(getWinnerMessage());
 					configureWinnerLine();
 				} else if (gameIsTied()) {
-					setStatusBarMessage("Empate.");
+					setStatusBarMessage(getApplicationText("tied-game"));
 				}
 			}
 		} catch (AlreadyOccupiedSpaceException alreadyOccupiedSpaceException) {
-			setStatusBarMessage("Espaço já ocupado.");
+			setStatusBarMessage(getApplicationText("space-already-occupied"));
 			configureTurnSymbolLabel(playerSymbolLabel, false);
 			clearStatusBarText(5);
 		}
@@ -296,7 +314,8 @@ public class GameBoardController implements Initializable {
 	}
 
 	private String getWinnerMessage() {
-		return String.format("%s ganhou!", ticTacToeGame.getWinner().get().getName());
+		var winnerName = new Object[]{ ticTacToeGame.getWinner().get().getName() };
+		return getApplicationText("player-won-message", winnerName);
 	}
 	
 	/**
@@ -304,8 +323,10 @@ public class GameBoardController implements Initializable {
 	 * or restart with the current players.
 	 */
 	private void configureGamePlayOptions() {
-		var restartGameButton = new Button("Reiniciar");
-		var newGameButton = new Button("Nova partida");
+		var restartGameButton = new Button(
+				getApplicationText("restart-button"));
+		var newGameButton = new Button(
+				getApplicationText("new-game-button"));
 		var gameOptionsHBox = new HBox(restartGameButton, newGameButton);
 		gameOptionsHBox.getStyleClass().add("game-options-box");
 		gameOptionsHBox.getChildren().forEach(button -> button.getStyleClass().add("game-option-button"));
@@ -325,6 +346,14 @@ public class GameBoardController implements Initializable {
 		});
 		
 		statusBar.getRightItems().add(gameOptionsHBox);
+	}
+
+	private String getApplicationText(String code) {
+		return applicationMessagess.getMessage(code, null, DEFAULT_LOCALE);
+	}
+	
+	private String getApplicationText(String code, Object[] arguments) {
+		return applicationMessagess.getMessage(code, arguments, DEFAULT_LOCALE);
 	}
 
 	/**

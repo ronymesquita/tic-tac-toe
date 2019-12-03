@@ -4,9 +4,11 @@ import static net.ronymesquita.tictactoe.model.PlayerSymbol.PLAYER_O;
 import static net.ronymesquita.tictactoe.model.PlayerSymbol.PLAYER_X;
 
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
@@ -25,6 +27,8 @@ import net.ronymesquita.tictactoe.model.TicTacToe;
 @Controller
 public class GameStartController implements Initializable {
 
+	private static final Locale DEFAULT_LOCALE = Locale.getDefault();
+	
 	@FXML
 	private HBox gameStartHBox;
 
@@ -45,6 +49,9 @@ public class GameStartController implements Initializable {
 
 	@Autowired
 	private TicTacToe ticTacToeGame;
+	
+	@Autowired
+	private MessageSource applicationMessages;
 
 	private WindowAlternator windowAlternator;
 
@@ -72,7 +79,7 @@ public class GameStartController implements Initializable {
 	}
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(URL location, ResourceBundle resourceBundle) {
 		gameStartImageView.fitWidthProperty()
 				.bind(gameStartHBox
 						.widthProperty()
@@ -81,6 +88,21 @@ public class GameStartController implements Initializable {
 				.bind(gameStartHBox
 						.heightProperty()
 						.multiply(.9999));
+		
+		configureInternationalizationMessages();
+	}
+
+	private void configureInternationalizationMessages() {
+		playerXNameTextField.setPromptText(
+				getApplicationText("player-x-prompt-text"));
+		playerONameTextField.setPromptText(
+				getApplicationText("player-o-prompt-text"));
+		gamePlayButton.setText(
+				getApplicationText("game-play-button"));
+	}
+
+	private String getApplicationText(String code) {
+		return applicationMessages.getMessage(code, null, DEFAULT_LOCALE);
 	}
 
 }
