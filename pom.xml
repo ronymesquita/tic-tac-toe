@@ -16,7 +16,7 @@
   <description>Tic-tac-toe game with Spring framework and JavaFX.</description>
   <properties>
     <java.version>11</java.version>
-    <javafx.version>13</javafx.version>
+    <javafx.version>11</javafx.version>
     <controlsfx.version>11.0.0</controlsfx.version>
   </properties>
   <dependencies>
